@@ -41,7 +41,7 @@ bot.onText(/^\/(start\sstart|help)$/, msg => {
   `)
 })
 bot.onText(/^\/stats$/, msg => stats(msg.chat.id))
-bot.onText(/^\/start/, msg => start(msg.chat.id))
+bot.onText(/^\/start$/, msg => start(msg.chat.id))
 bot.onText(/^\/stop$/, msg => stop(msg.chat.id))
 bot.onText(/^\/startv$/, msg => {
   gameClient.command(cmd('start'), streamToBot.bind(null, msg.chat.id))
@@ -51,7 +51,7 @@ bot.onText(/^\/stopv$/, msg => {
 })
 
 // Secret commands
-bot.onText(/^создавай$/, msg => {
+bot.onText(/^\/?создавай$/, msg => {
   const chatId = msg.chat.id
 
   gameClient.command(
@@ -74,4 +74,4 @@ bot.onText(/^создавай$/, msg => {
 
   bot.sendMessage(chatId, 'щя погодь')
 })
-bot.onText(/^ну\s?шо\s?там\??$/, msg => stats(msg.chat.id))
+bot.onText(/^\/?ну\s?шо\s?там\??$/, msg => stats(msg.chat.id))
